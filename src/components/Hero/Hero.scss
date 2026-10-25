@@ -56,7 +56,7 @@
     position: absolute;
     inset: 6.5rem max(1rem, 50% - 24rem) 0;
     z-index: -1;
-    border: 1px solid rgba(125, 130, 85, 0.2);
+    border: 1px solid rgba(153, 122, 70, 0.25);
     border-bottom: 0;
     border-radius: 48% 48% 0 0 / 22rem 22rem 0 0;
     pointer-events: none;
@@ -90,7 +90,7 @@
     font-family: var(--tamil);
     font-size: clamp(0.85rem, 3.3vw, 1.1rem);
     line-height: 1.8;
-    color: #54634d;
+    color: #6a434c;
     text-wrap: balance;
 
     cite {
@@ -109,7 +109,7 @@
     font-style: italic;
     font-size: clamp(1.1rem, 3.8vw, 1.4rem);
     line-height: 1.45;
-    color: #54634d;
+    color: #6a434c;
     text-wrap: balance;
   }
 

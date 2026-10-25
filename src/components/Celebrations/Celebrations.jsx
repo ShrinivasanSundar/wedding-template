@@ -3,35 +3,33 @@ import { useInView } from '../../hooks/useInView.js';
 import './Celebrations.scss';
 
 const VENUE =
-  'Brahmana Kalyana Mandapam, Pillaiyar Kovil Street, Old Post Office Road, S.S. Colony, Madurai, Tamil Nadu';
+  'VRAN Annamalai Chettiyar Marriage Mahal, Reddiarchatram, Tamil Nadu';
 
-// Times in UTC for the calendar entries (IST is UTC+5:30). The reception has
-// no stated end time, so its entry starts and ends at 6:30 PM.
+// Times in UTC for the calendar entries (IST is UTC+5:30).
 const EVENTS = [
   {
-    title: 'The reception',
-    tamil: 'வரவேற்பு',
-    datetime: '2026-11-28T18:30:00+05:30',
-    date: 'Saturday, 28 November 2026',
-    time: '6:30 PM onwards',
-    start: '20261128T130000Z',
-    end: '20261128T130000Z',
-    details: '6:30 PM onwards IST.',
+    title: 'The engagement',
+    tamil: 'நிச்சயதார்த்தம்',
+    datetime: '2026-11-14T19:20:00+05:30',
+    date: 'Saturday, 14 November 2026',
+    time: '7:20–7:50 PM',
+    start: '20261114T135000Z',
+    end: '20261114T142000Z',
+    details: 'Nitchayathartham, 7:20–7:50 PM IST.',
   },
   {
     title: 'The wedding',
     tamil: 'சுபமுஹூர்த்தம்',
-    datetime: '2026-11-29T07:30:00+05:30',
-    date: 'Sunday, 29 November 2026',
-    time: '7:30–9:30 AM',
-    note: 'Muhurtham at 8:00 AM',
-    start: '20261129T020000Z',
-    end: '20261129T040000Z',
-    details: '7:30–9:30 AM IST. Muhurtham at 8:00 AM.',
+    datetime: '2026-11-15T06:00:00+05:30',
+    date: 'Sunday, 15 November 2026',
+    time: '6:00–7:30 AM',
+    start: '20261115T003000Z',
+    end: '20261115T020000Z',
+    details: 'Muhurtham, 6:00–7:30 AM IST.',
   },
 ];
 
-const calendarTitle = (event) => `Shrinivasan & Sri Dharshini — ${event.title}`;
+const calendarTitle = (event) => `Ajithkumar & Deepa — ${event.title}`;
 
 const googleCalendarUrl = (event) =>
   'https://calendar.google.com/calendar/render?' +
@@ -50,10 +48,10 @@ function downloadIcs() {
   const lines = [
     'BEGIN:VCALENDAR',
     'VERSION:2.0',
-    'PRODID:-//Shrinivasan & Sri Dharshini//Wedding//EN',
+    'PRODID:-//Ajithkumar & Deepa//Wedding//EN',
     ...EVENTS.flatMap((event) => [
       'BEGIN:VEVENT',
-      `UID:${event.start}@shrinivasan-sri-dharshini`,
+      `UID:${event.start}@ajith-weds-deepa`,
       `DTSTAMP:${event.start}`,
       `DTSTART:${event.start}`,
       `DTEND:${event.end}`,
@@ -67,7 +65,7 @@ function downloadIcs() {
   const url = URL.createObjectURL(new Blob([lines.join('\r\n')], { type: 'text/calendar' }));
   const link = Object.assign(document.createElement('a'), {
     href: url,
-    download: 'shrinivasan-sri-dharshini-wedding.ics',
+    download: 'ajithkumar-deepa-wedding.ics',
   });
   link.click();
   URL.revokeObjectURL(url);

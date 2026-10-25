@@ -50,9 +50,9 @@ export default function TempleEntrance({ onStart, onComplete }) {
             onError={() => setReady(true)}
           />
           <p className="entrance__names">
-            <span>Chennu</span>
+            <span>Ajith</span>
             <span className="entrance__heart">{'♥︎'}</span>
-            <span>Vani</span>
+            <span>Deepa</span>
           </p>
           <div className="entrance__spill" />
           <div className="entrance__doorway">

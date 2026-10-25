@@ -7,7 +7,6 @@ import Hero from './components/Hero/Hero.jsx';
 import DateReveal from './components/DateReveal/DateReveal.jsx';
 import Celebrations from './components/Celebrations/Celebrations.jsx';
 import Venue from './components/Venue/Venue.jsx';
-import Keepsake from './components/Keepsake/Keepsake.jsx';
 import SiteFooter from './components/SiteFooter/SiteFooter.jsx';
 import MusicToggle from './components/MusicToggle/MusicToggle.jsx';
 import FallingParticles from './components/FallingParticles/FallingParticles.jsx';
@@ -26,7 +25,6 @@ export default function App() {
             <DateReveal />
             <Celebrations />
             <Venue />
-            <Keepsake />
           </main>
           <SiteFooter />
           <FallingParticles />

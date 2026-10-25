@@ -51,20 +51,20 @@ export default function Hero() {
 
         <div className="hero__couple">
           <div>
-            <h2 className="hero__name">Shrinivasan</h2>
+            <h2 className="hero__name">Ajithkumar</h2>
             <p className="hero__parents">
-              S/o <strong>Mr. Sundararajan</strong>
+              S/o <strong>Mr. Palanichamy</strong>
               <br />
-              &amp; <strong>Mrs. Shanthi</strong>
+              &amp; <strong>Mrs. Chellamani</strong>
             </p>
           </div>
           <span className="hero__divider" aria-hidden="true" />
           <div>
-            <h2 className="hero__name">Sri Dharshini</h2>
+            <h2 className="hero__name">Deepa</h2>
             <p className="hero__parents">
-              D/o <strong>Mr. Murali</strong>
+              D/o <strong>Mr. Elumalai</strong>
               <br />
-              &amp; <strong>Mrs. Mohana</strong>
+              &amp; <strong>Mrs. Kuppayammal</strong>
             </p>
           </div>
         </div>

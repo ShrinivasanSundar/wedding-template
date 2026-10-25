@@ -49,9 +49,9 @@ export default function SiteFooter() {
             our <em>first chapter.</em>
           </h2>
           <p className="site-footer__signature">
-            Shrinivasan <i>&amp;</i> Sri Dharshini
+            Ajithkumar <i>&amp;</i> Deepa
           </p>
-          <p className="eyebrow">29 November 2026 · Madurai</p>
+          <p className="eyebrow">15 November 2026 · Reddiarchatram</p>
         </div>
       </section>
 

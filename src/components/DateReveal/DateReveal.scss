@@ -1,8 +1,8 @@
-// The shared sage, cream and gold palette (see index.scss).
+// The shared maroon, blush, cream and gold palette (see index.scss).
 $paper: #f5f2e9;
-$ink: #344535;
-$accent: #5b6b4a; // deep sage
-$sage: #66715f;
+$ink: #4a1d2a;
+$accent: #8c3a4e; // rose maroon
+$rose: #7a5a60;
 $gold: #997a46;
 
 .date-reveal {
@@ -59,7 +59,7 @@ $gold: #997a46;
     font-size: 0.85rem;
     letter-spacing: 0.35em;
     text-transform: uppercase;
-    color: $sage;
+    color: $rose;
   }
 
   &__heading {
@@ -92,7 +92,7 @@ $gold: #997a46;
     font-size: 0.9rem;
     letter-spacing: 0.2em;
     text-transform: uppercase;
-    color: $sage;
+    color: $rose;
   }
 
   &__result {
@@ -176,7 +176,7 @@ $gold: #997a46;
     font-size: 0.78rem;
     letter-spacing: 0.3em;
     text-transform: uppercase;
-    color: $sage;
+    color: $rose;
   }
 
   &__card {

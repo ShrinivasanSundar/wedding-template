@@ -63,7 +63,7 @@
     letter-spacing: 0.2em;
     text-align: center;
     text-transform: uppercase;
-    color: #556344;
+    color: #6e3b47;
   }
 
   &__details {
@@ -85,37 +85,11 @@
       font-size: 0.8rem;
       font-style: normal;
       line-height: 1.9;
-      color: #687260;
+      color: #80616a;
     }
 
     .arrow-link {
       margin-top: 1.3rem;
-    }
-  }
-
-  &__tamil {
-    margin-bottom: 1.5rem;
-    font-family: var(--tamil);
-    font-size: 0.75rem;
-    line-height: 1.9;
-    color: #647057;
-  }
-
-  &__help {
-    margin: 1.9rem 0 0.55rem;
-    font-size: 0.65rem;
-    color: #6c765f;
-  }
-
-  &__phone {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.9rem;
-    font-size: 0.75rem;
-    letter-spacing: 0.08em;
-
-    .arrow {
-      width: 1rem;
     }
   }
 

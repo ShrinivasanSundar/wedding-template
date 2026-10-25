@@ -4,10 +4,10 @@ import Confetti from './Confetti.jsx';
 import { useInView } from '../../hooks/useInView.js';
 import './DateReveal.scss';
 
-// The muhurtham: 8:00 AM Indian Standard Time on 29 November 2026. Dates are
+// The muhurtham: 6:00 AM Indian Standard Time on 15 November 2026. Dates are
 // always shown in IST, so visitors abroad see the same day; the countdown
 // runs to this exact moment wherever they are.
-const MUHURTHAM = new Date('2026-11-29T08:00:00+05:30');
+const MUHURTHAM = new Date('2026-11-15T06:00:00+05:30');
 const IST = 'Asia/Kolkata';
 const DAY_MS = 24 * 60 * 60 * 1000;
 
@@ -93,7 +93,7 @@ export default function DateReveal() {
         <div className="date-reveal__result">
           <Confetti />
           <p className="date-reveal__full-date">{FULL_DATE}</p>
-          <p className="date-reveal__time">Muhurtham at 8:00 AM IST</p>
+          <p className="date-reveal__time">Muhurtham 6:00–7:30 AM IST</p>
           <Countdown />
           <blockquote className="date-reveal__quote">
             A wedding is not just a day — it is the first page of a story two families write

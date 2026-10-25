@@ -3,25 +3,25 @@
     margin: 0;
   }
 
-  // Deep green panel with the leaf painting showing faintly through.
+  // Deep maroon panel with the temple corridor showing faintly through.
   &__closing {
     position: relative;
     isolation: isolate;
     overflow: hidden;
     padding: 6.5rem 1.5rem 6rem;
-    background: #344b3d;
-    color: #f0efe0;
+    background: #4a1824;
+    color: #f6ece6;
     text-align: center;
   }
 
-  // The temple corridor photo, tinted green and softly blurred; the photo is
+  // The temple corridor photo, tinted maroon and softly blurred; the photo is
   // small, and the blur keeps it from looking pixelated when stretched.
   &__art {
     position: absolute;
     inset: -20% -1rem;
     z-index: -1;
     background:
-      linear-gradient(rgba(52, 75, 61, 0.82), rgba(52, 75, 61, 0.92)),
+      linear-gradient(rgba(74, 24, 36, 0.82), rgba(74, 24, 36, 0.92)),
       var(--footer-image) center / cover no-repeat;
     filter: blur(2px);
   }
@@ -37,7 +37,7 @@
     max-width: 28rem;
     margin: 0 auto 1.7rem;
     font: 400 1.25rem / 1.65 var(--serif);
-    color: #ced4c5;
+    color: #e3cfcf;
   }
 
   h2 {
@@ -45,7 +45,7 @@
     letter-spacing: -0.025em;
 
     em {
-      color: #d9d6b9;
+      color: #e8c9a0;
     }
   }
 
@@ -61,7 +61,7 @@
 
   .eyebrow {
     font-size: 0.5rem;
-    color: #c0cbbb;
+    color: #d7bfc2;
   }
 
   &__bar {
@@ -69,9 +69,11 @@
     align-items: center;
     justify-content: space-between;
     gap: 1.25rem;
-    padding: 1.4rem 5% calc(1.4rem + env(safe-area-inset-bottom, 0px));
-    background: #2e4235;
-    color: #c9d0bf;
+    // The right side leaves room for the floating music button, which sits
+    // over the bottom-right corner of the page.
+    padding: 1.4rem calc(5% + 9.5rem) calc(1.4rem + env(safe-area-inset-bottom, 0px)) 5%;
+    background: #3a121c;
+    color: #dcc3c6;
     font-size: 0.56rem;
     letter-spacing: 0.06em;
 
@@ -108,9 +110,9 @@
   &__dot {
     width: 6px;
     height: 6px;
-    border: 1px solid #c4c4a1;
+    border: 1px solid #d9b98a;
     border-radius: 50%;
-    background: #c4c4a1;
+    background: #d9b98a;
 
     &[data-paused='true'] {
       background: none;
@@ -134,7 +136,8 @@
     &__bar {
       flex-wrap: wrap;
       gap: 0 1rem;
-      padding-inline: 7%;
+      // On phones the music button sits below the links instead.
+      padding: 1rem 7% calc(4.5rem + env(safe-area-inset-bottom, 0px));
       font-size: 0.5rem;
     }
 

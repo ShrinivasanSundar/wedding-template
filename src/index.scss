@@ -4,13 +4,13 @@
   box-sizing: border-box;
 }
 
-// Sage, cream and muted gold, shared by everything after the temple doors.
+// Deep maroon, blush, cream and antique gold, shared by everything after the temple doors.
 :root {
   --paper: #f5f2e9;
-  --ink: #344535;
-  --muted: #66715f;
+  --ink: #4a1d2a;
+  --muted: #7a5a60;
   --gold: #997a46;
-  --line: #cbd0bd;
+  --line: #e2cfc8;
   --serif: Cormorant, Georgia, serif;
   --sans: 'DM Sans', Arial, sans-serif;
   --tamil: 'Noto Serif Tamil', serif;
@@ -88,7 +88,7 @@ a {
   align-items: center;
   gap: 2.1rem;
   padding: 0.95rem 0;
-  border-bottom: 1px solid #7c886c;
+  border-bottom: 1px solid #9c6e74;
   font-size: 0.65rem;
   letter-spacing: 0.12em;
   text-transform: uppercase;
