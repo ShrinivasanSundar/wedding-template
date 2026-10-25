@@ -3,25 +3,25 @@
     margin: 0;
   }
 
-  // Deep plum panel with the sunset temple showing faintly through.
+  // Lavender panel with the sunset temple showing faintly through.
   &__closing {
     position: relative;
     isolation: isolate;
     overflow: hidden;
     padding: 6.5rem 1.5rem 6rem;
-    background: #2a0e18;
-    color: #f7ead8;
+    background: var(--lavender);
+    color: var(--ink);
     text-align: center;
   }
 
-  // The temple corridor photo, tinted plum and softly blurred; the photo is
+  // The temple corridor photo, washed lavender and softly blurred; the photo is
   // small, and the blur keeps it from looking pixelated when stretched.
   &__art {
     position: absolute;
     inset: -20% -1rem;
     z-index: -1;
     background:
-      linear-gradient(rgba(31, 12, 21, 0.78), rgba(31, 12, 21, 0.9)),
+      linear-gradient(rgba(239, 232, 247, 0.82), rgba(248, 232, 238, 0.9)),
       var(--footer-image) center / cover no-repeat;
     filter: blur(2px);
   }
@@ -37,7 +37,7 @@
     max-width: 28rem;
     margin: 0 auto 1.7rem;
     font: 400 1.25rem / 1.65 var(--serif);
-    color: #e6d2c0;
+    color: #5a3a58;
   }
 
   h2 {
@@ -61,7 +61,7 @@
 
   .eyebrow {
     font-size: 0.5rem;
-    color: #d6bda9;
+    color: var(--muted);
   }
 
   &__bar {
@@ -72,8 +72,8 @@
     // The right side leaves room for the floating music button, which sits
     // over the bottom-right corner of the page.
     padding: 1.4rem calc(5% + 9.5rem) calc(1.4rem + env(safe-area-inset-bottom, 0px)) 5%;
-    background: #150709;
-    color: #d6bda9;
+    background: #e4d8ee;
+    color: #5a3a58;
     font-size: 0.56rem;
     letter-spacing: 0.06em;
 

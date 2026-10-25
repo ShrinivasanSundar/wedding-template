@@ -1,9 +1,9 @@
-// The dusk palette (see index.scss).
-$panel: #2b111d;
-$ink: #f7ead8; // ivory
-$accent: #f2a13a; // marigold
-$rose: #cdb3a4; // muted ivory
-$gold: #e6ac4c;
+// The pastel palette (see index.scss).
+$panel: #f8e8ee; // blush
+$ink: #3e2140; // deep plum
+$accent: #b5527d; // rose
+$rose: #7a6079; // muted plum
+$gold: #b0705a; // rose gold
 $card-ink: #4a1824; // numbers on the cream scratch cards
 
 .date-reveal {
@@ -19,7 +19,7 @@ $card-ink: #4a1824; // numbers on the cream scratch cards
   isolation: isolate;
   background: $panel;
 
-  // A field of kolam dots with a warm lamp-glow behind the cards, fading
+  // A field of kolam dots with a soft lavender glow behind the cards, fading
   // out towards the edges so the section melts into its neighbours.
   &::before {
     content: '';
@@ -27,8 +27,8 @@ $card-ink: #4a1824; // numbers on the cream scratch cards
     inset: 0;
     z-index: -1;
     background:
-      radial-gradient(ellipse at 50% 55%, rgba(242, 140, 40, 0.16), transparent 60%),
-      radial-gradient(circle, rgba(230, 172, 76, 0.22) 1.2px, transparent 1.8px) 0 0 / 22px 22px;
+      radial-gradient(ellipse at 50% 55%, rgba(196, 170, 230, 0.35), transparent 60%),
+      radial-gradient(circle, rgba(176, 112, 90, 0.28) 1.2px, transparent 1.8px) 0 0 / 22px 22px;
     -webkit-mask-image: radial-gradient(ellipse at center, #000 35%, transparent 75%);
     mask-image: radial-gradient(ellipse at center, #000 35%, transparent 75%);
   }
@@ -108,7 +108,7 @@ $card-ink: #4a1824; // numbers on the cream scratch cards
       padding: 0.6rem 0.3rem;
       border: 1px solid rgba($gold, 0.55);
       border-radius: 0.5rem;
-      background: rgba(255, 255, 255, 0.05);
+      background: rgba(255, 255, 255, 0.7);
     }
 
     strong {
@@ -170,7 +170,7 @@ $card-ink: #4a1824; // numbers on the cream scratch cards
     border: 2px solid $gold;
     border-radius: 0.75rem;
     background: radial-gradient(circle at 50% 40%, #fffdf6, #f6e3b4);
-    box-shadow: 0 0.5rem 1.2rem rgba(0, 0, 0, 0.45);
+    box-shadow: 0 0.5rem 1.2rem rgba(62, 33, 64, 0.18);
     // Dragging to scratch must not select the number underneath.
     user-select: none;
     -webkit-user-select: none;

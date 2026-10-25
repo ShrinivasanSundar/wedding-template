@@ -1,6 +1,6 @@
 .venue {
   padding: 5.3rem max(6%, 50vw - 37.5rem) 7.2rem;
-  background: var(--panel);
+  background: var(--paper);
   color: var(--ink);
 
   :where(h2, p) {
@@ -23,8 +23,8 @@
     height: 30rem;
     overflow: hidden;
     border-radius: 49% 49% 2px 2px;
-    background: #3a1824;
-    box-shadow: 0 1.5rem 3rem rgba(0, 0, 0, 0.45);
+    background: #efe3ea;
+    box-shadow: 0 1.5rem 3rem rgba(62, 33, 64, 0.18);
 
     img {
       position: absolute;
@@ -51,7 +51,7 @@
     content: '';
     position: absolute;
     inset: 55% 0 0;
-    background: linear-gradient(transparent, rgba(31, 12, 21, 0.85));
+    background: linear-gradient(transparent, rgba(62, 33, 64, 0.75));
   }
 
   &__caption {
@@ -87,7 +87,7 @@
       font-size: 0.8rem;
       font-style: normal;
       line-height: 1.9;
-      color: #d9c2b0;
+      color: var(--muted);
     }
 
     .arrow-link {
