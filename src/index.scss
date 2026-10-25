@@ -4,13 +4,16 @@
   box-sizing: border-box;
 }
 
-// Deep maroon, blush, cream and antique gold, shared by everything after the temple doors.
+// A temple festival at dusk, shared by everything after the temple doors:
+// deep plum backgrounds, ivory text, marigold gold accents.
 :root {
-  --paper: #f5f2e9;
-  --ink: #4a1d2a;
-  --muted: #7a5a60;
-  --gold: #997a46;
-  --line: #e2cfc8;
+  --paper: #1f0c15; // page background (named paper to match the other site's code)
+  --panel: #2b111d; // alternate section background
+  --ink: #f7ead8; // ivory text
+  --muted: #cdb3a4;
+  --gold: #e6ac4c; // marigold gold
+  --marigold: #f28c28;
+  --line: rgba(230, 172, 76, 0.28);
   --serif: Cormorant, Georgia, serif;
   --sans: 'DM Sans', Arial, sans-serif;
   --tamil: 'Noto Serif Tamil', serif;
@@ -24,7 +27,7 @@ body {
 }
 
 // index.html paints the page dark for the temple entrance; once the
-// invitation is showing, overscroll reveals paper instead.
+// invitation is showing, overscroll reveals the plum background instead.
 html:has(main),
 html:has(main) body {
   background: var(--paper);
@@ -88,7 +91,7 @@ a {
   align-items: center;
   gap: 2.1rem;
   padding: 0.95rem 0;
-  border-bottom: 1px solid #9c6e74;
+  border-bottom: 1px solid rgba(230, 172, 76, 0.55);
   font-size: 0.65rem;
   letter-spacing: 0.12em;
   text-transform: uppercase;

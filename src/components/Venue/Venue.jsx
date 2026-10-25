@@ -1,4 +1,4 @@
-import botanicalsUrl from '../../assets/botanicals.webp';
+import gopuramUrl from '../../assets/02_gopuram.webp';
 import Arrow from '../Arrow.jsx';
 import { useInView } from '../../hooks/useInView.js';
 import './Venue.scss';
@@ -23,14 +23,8 @@ export default function Venue() {
 
       <div className="venue__layout reveal" data-visible={visible}>
         <div className="venue__art" aria-hidden="true">
-          <img data-parallax="0.08" src={botanicalsUrl} alt="" width="1920" height="1074" loading="lazy" />
+          <img data-parallax="0.08" src={gopuramUrl} alt="" width="591" height="463" loading="lazy" />
           <div className="venue__frame" />
-          <svg className="venue__lotus" viewBox="0 0 100 75" fill="none">
-            <path d="M50 58C25 50 16 36 17 23c16 0 27 11 33 29C56 34 67 23 83 23c1 13-8 27-33 35Z" />
-            <path d="M50 58C30 40 36 19 50 8c14 11 20 32 0 50Z" />
-            <path d="M50 58C28 60 10 50 7 37c14-3 31 6 43 21 12-15 29-24 43-21-3 13-21 23-43 21Z" />
-            <path d="M30 65h40M39 71h22" />
-          </svg>
           <span className="venue__caption">With love, in Reddiarchatram</span>
         </div>
 

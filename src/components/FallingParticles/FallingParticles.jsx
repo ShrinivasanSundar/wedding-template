@@ -1,8 +1,8 @@
 import './FallingParticles.scss';
 
 const KINDS = [
-  { name: 'flower', glyph: '✿' },
-  { name: 'star', glyph: '✦' },
+  { name: 'marigold', glyph: '❀' },
+  { name: 'jasmine', glyph: '✿' },
 ];
 
 // Deterministic spread so particles do not jump between renders.
@@ -18,7 +18,7 @@ const PARTICLES = Array.from({ length: 10 }, (_, i) => ({
   },
 }));
 
-// Decorative overlay: glowing ✿ and ✦ drifting down over the invitation.
+// Decorative overlay: marigold and jasmine petals drifting down over the invitation.
 export default function FallingParticles() {
   return (
     <div className="falling" aria-hidden="true">

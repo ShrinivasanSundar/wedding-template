@@ -7,6 +7,7 @@ import Hero from './components/Hero/Hero.jsx';
 import DateReveal from './components/DateReveal/DateReveal.jsx';
 import Celebrations from './components/Celebrations/Celebrations.jsx';
 import Venue from './components/Venue/Venue.jsx';
+import Ornament from './components/Ornaments/Ornament.jsx';
 import SiteFooter from './components/SiteFooter/SiteFooter.jsx';
 import MusicToggle from './components/MusicToggle/MusicToggle.jsx';
 import FallingParticles from './components/FallingParticles/FallingParticles.jsx';
@@ -23,9 +24,12 @@ export default function App() {
           <main>
             <Hero />
             <DateReveal />
+            <Ornament />
             <Celebrations />
+            <Ornament />
             <Venue />
           </main>
+          <Ornament />
           <SiteFooter />
           <FallingParticles />
           <MusicToggle />

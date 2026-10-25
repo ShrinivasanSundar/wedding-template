@@ -22,15 +22,14 @@
     line-height: 1;
     animation: falling-sway var(--sway) ease-in-out infinite alternate;
 
-    &--flower {
-      color: #e6b9b0;
-      text-shadow: 0 0 3px rgba(214, 150, 140, 0.25);
+    &--marigold {
+      color: #f28c28;
+      text-shadow: 0 0 3px rgba(242, 140, 40, 0.3);
     }
 
-    &--star {
-      color: #c9a96a;
-      text-shadow: 0 0 3px rgba(201, 169, 106, 0.25);
-      animation-name: falling-twinkle;
+    &--jasmine {
+      color: #fff4dc;
+      text-shadow: 0 0 3px rgba(255, 244, 220, 0.3);
     }
   }
 
@@ -51,16 +50,5 @@
   }
   to {
     transform: translateX(14px) rotate(50deg);
-  }
-}
-
-@keyframes falling-twinkle {
-  from {
-    transform: translateX(-8px) scale(0.8);
-    opacity: 0.4;
-  }
-  to {
-    transform: translateX(8px) scale(1.1);
-    opacity: 1;
   }
 }

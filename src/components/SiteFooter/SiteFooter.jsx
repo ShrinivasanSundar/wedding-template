@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import corridorUrl from '../../assets/title.jpg';
+import templeUrl from '../../assets/temple-scene.webp';
 import Arrow from '../Arrow.jsx';
 import { useInView } from '../../hooks/useInView.js';
 import './SiteFooter.scss';
@@ -28,7 +28,7 @@ export default function SiteFooter() {
       <section className="site-footer__closing" aria-labelledby="closing-title">
         <div
           className="site-footer__art"
-          style={{ '--footer-image': `url(${corridorUrl})` }}
+          style={{ '--footer-image': `url(${templeUrl})` }}
           data-parallax="0.25"
           aria-hidden="true"
         />

@@ -3,25 +3,25 @@
     margin: 0;
   }
 
-  // Deep maroon panel with the temple corridor showing faintly through.
+  // Deep plum panel with the sunset temple showing faintly through.
   &__closing {
     position: relative;
     isolation: isolate;
     overflow: hidden;
     padding: 6.5rem 1.5rem 6rem;
-    background: #4a1824;
-    color: #f6ece6;
+    background: #2a0e18;
+    color: #f7ead8;
     text-align: center;
   }
 
-  // The temple corridor photo, tinted maroon and softly blurred; the photo is
+  // The temple corridor photo, tinted plum and softly blurred; the photo is
   // small, and the blur keeps it from looking pixelated when stretched.
   &__art {
     position: absolute;
     inset: -20% -1rem;
     z-index: -1;
     background:
-      linear-gradient(rgba(74, 24, 36, 0.82), rgba(74, 24, 36, 0.92)),
+      linear-gradient(rgba(31, 12, 21, 0.78), rgba(31, 12, 21, 0.9)),
       var(--footer-image) center / cover no-repeat;
     filter: blur(2px);
   }
@@ -29,7 +29,7 @@
   &__lotus {
     width: 3rem;
     margin-bottom: 1.7rem;
-    stroke: #c5b78b;
+    stroke: var(--gold);
     stroke-width: 1px;
   }
 
@@ -37,7 +37,7 @@
     max-width: 28rem;
     margin: 0 auto 1.7rem;
     font: 400 1.25rem / 1.65 var(--serif);
-    color: #e3cfcf;
+    color: #e6d2c0;
   }
 
   h2 {
@@ -45,7 +45,7 @@
     letter-spacing: -0.025em;
 
     em {
-      color: #e8c9a0;
+      color: var(--gold);
     }
   }
 
@@ -55,13 +55,13 @@
 
     i {
       margin: 0 0.4rem;
-      color: #c9b991;
+      color: var(--gold);
     }
   }
 
   .eyebrow {
     font-size: 0.5rem;
-    color: #d7bfc2;
+    color: #d6bda9;
   }
 
   &__bar {
@@ -72,8 +72,8 @@
     // The right side leaves room for the floating music button, which sits
     // over the bottom-right corner of the page.
     padding: 1.4rem calc(5% + 9.5rem) calc(1.4rem + env(safe-area-inset-bottom, 0px)) 5%;
-    background: #3a121c;
-    color: #dcc3c6;
+    background: #150709;
+    color: #d6bda9;
     font-size: 0.56rem;
     letter-spacing: 0.06em;
 
@@ -110,9 +110,9 @@
   &__dot {
     width: 6px;
     height: 6px;
-    border: 1px solid #d9b98a;
+    border: 1px solid var(--gold);
     border-radius: 50%;
-    background: #d9b98a;
+    background: var(--gold);
 
     &[data-paused='true'] {
       background: none;

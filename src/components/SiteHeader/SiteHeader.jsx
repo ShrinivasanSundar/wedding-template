@@ -1,3 +1,4 @@
+import Thoranam from '../Ornaments/Thoranam.jsx';
 import './SiteHeader.scss';
 
 export default function SiteHeader() {
@@ -12,6 +13,7 @@ export default function SiteHeader() {
         <a href="#venue">The venue</a>
       </nav>
       <span className="site-header__date">15 . 11 . 2026</span>
+      <Thoranam />
     </header>
   );
 }

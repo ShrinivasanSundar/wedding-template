@@ -1,0 +1,73 @@
+// Hangs from the bottom edge of the title bar and sways gently.
+.thoranam {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  display: block;
+  pointer-events: none;
+  filter: drop-shadow(0 4px 6px rgba(0, 0, 0, 0.35));
+  transform-origin: top;
+  animation: thoranam-sway 5s ease-in-out infinite alternate;
+}
+
+@keyframes thoranam-sway {
+  from {
+    transform: skewX(-1.2deg);
+  }
+  to {
+    transform: skewX(1.2deg);
+  }
+}
+
+// Sits on the seam between two sections, half over each.
+.ornament {
+  position: relative;
+  z-index: 3;
+  display: flex;
+  justify-content: center;
+  // Top-aligned so the zero-height row does not squash the drawing.
+  align-items: flex-start;
+  height: 0;
+  pointer-events: none;
+
+  svg {
+    width: min(20rem, 80vw);
+    transform: translateY(-55%);
+    overflow: visible;
+  }
+
+  &__flame {
+    transform-origin: 160px 34px;
+    animation: ornament-flicker 1.6s ease-in-out infinite alternate;
+  }
+
+  &__glow {
+    animation: ornament-glow 1.6s ease-in-out infinite alternate;
+  }
+}
+
+@keyframes ornament-flicker {
+  from {
+    transform: scale(1, 1) rotate(-2deg);
+  }
+  to {
+    transform: scale(0.92, 1.08) rotate(2deg);
+  }
+}
+
+@keyframes ornament-glow {
+  from {
+    opacity: 0.7;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .thoranam,
+  .ornament__flame,
+  .ornament__glow {
+    animation: none;
+  }
+}

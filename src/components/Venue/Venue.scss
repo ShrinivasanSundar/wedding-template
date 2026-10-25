@@ -1,6 +1,6 @@
 .venue {
   padding: 5.3rem max(6%, 50vw - 37.5rem) 7.2rem;
-  background: var(--paper);
+  background: var(--panel);
   color: var(--ink);
 
   :where(h2, p) {
@@ -16,24 +16,25 @@
     margin: auto;
   }
 
-  // The leaf painting, cropped to its banana leaves and lotus, in an arch.
+  // The gopuram, framed in an arch, with a dark fade at the foot so the
+  // caption stays readable.
   &__art {
     position: relative;
     height: 30rem;
     overflow: hidden;
     border-radius: 49% 49% 2px 2px;
-    background: #ede6d4;
+    background: #3a1824;
+    box-shadow: 0 1.5rem 3rem rgba(0, 0, 0, 0.45);
 
     img {
       position: absolute;
-      top: -15%;
+      top: -8%;
       left: 0;
-      width: 185%;
+      width: 100%;
       max-width: none;
-      height: 125%;
+      height: 116%;
       object-fit: cover;
-      object-position: left center;
-      opacity: 0.9;
+      object-position: center top;
       will-change: translate;
     }
   }
@@ -41,21 +42,21 @@
   &__frame {
     position: absolute;
     inset: 15px;
-    border: 1px solid rgba(249, 247, 230, 0.63);
+    border: 1px solid rgba(255, 214, 140, 0.55);
     border-radius: inherit;
   }
 
-  &__lotus {
+  // Darkens the foot of the picture behind the caption.
+  &__art::after {
+    content: '';
     position: absolute;
-    top: 40%;
-    right: 12%;
-    width: 4.75rem;
-    stroke: #8a7850;
-    stroke-width: 1px;
+    inset: 55% 0 0;
+    background: linear-gradient(transparent, rgba(31, 12, 21, 0.85));
   }
 
   &__caption {
     position: absolute;
+    z-index: 1;
     left: 0;
     right: 0;
     bottom: 2.4rem;
@@ -63,7 +64,8 @@
     letter-spacing: 0.2em;
     text-align: center;
     text-transform: uppercase;
-    color: #6e3b47;
+    color: #fbe9cf;
+    text-shadow: 0 1px 6px rgba(0, 0, 0, 0.8);
   }
 
   &__details {
@@ -85,7 +87,7 @@
       font-size: 0.8rem;
       font-style: normal;
       line-height: 1.9;
-      color: #80616a;
+      color: #d9c2b0;
     }
 
     .arrow-link {
@@ -120,9 +122,8 @@
       margin: 0 auto;
 
       img {
-        top: -20%;
-        width: 190%;
-        height: 132%;
+        top: -6%;
+        height: 112%;
       }
     }
 

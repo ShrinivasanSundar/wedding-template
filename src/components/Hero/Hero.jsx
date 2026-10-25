@@ -1,5 +1,5 @@
 import emblemUrl from '../../assets/logo-emblem.webp';
-import botanicalsUrl from '../../assets/botanicals.webp';
+import templeTankUrl from '../../assets/01_background.webp';
 import './Hero.scss';
 
 export default function Hero() {
@@ -8,10 +8,10 @@ export default function Hero() {
 
   return (
     <section id="invitation" className="hero">
-      {/* The leaves lag furthest behind the page, the text a little less. */}
+      {/* The temple lags furthest behind the page, the text a little less. */}
       <div
         className="hero__art"
-        style={{ '--hero-image': `url(${botanicalsUrl})` }}
+        style={{ '--hero-image': `url(${templeTankUrl})` }}
         data-parallax="0.4"
         data-parallax-from="top"
         aria-hidden="true"

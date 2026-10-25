@@ -1,54 +1,36 @@
-// The shared maroon, blush, cream and gold palette (see index.scss).
-$paper: #f5f2e9;
-$ink: #4a1d2a;
-$accent: #8c3a4e; // rose maroon
-$rose: #7a5a60;
-$gold: #997a46;
+// The dusk palette (see index.scss).
+$panel: #2b111d;
+$ink: #f7ead8; // ivory
+$accent: #f2a13a; // marigold
+$rose: #cdb3a4; // muted ivory
+$gold: #e6ac4c;
+$card-ink: #4a1824; // numbers on the cream scratch cards
 
 .date-reveal {
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: clamp(0.9rem, 2.4vh, 1.5rem);
-  // Generous top and bottom padding keeps the text clear of the leaves.
-  padding: clamp(6.5rem, 15vh, 9rem) 1.25rem 12rem;
+  padding: clamp(6rem, 14vh, 8rem) 1.25rem 8rem;
   text-align: center;
   color: $ink;
   font-family: var(--serif);
   position: relative;
   isolation: isolate;
-  background: $paper;
+  background: $panel;
 
-  // The watercolour frame (public/date-bg.webp), in a centred column behind
-  // the text. Its top edge fades in from the paper colour so there is no
-  // hard line under the first section; on wide screens its sides fade too.
+  // A field of kolam dots with a warm lamp-glow behind the cards, fading
+  // out towards the edges so the section melts into its neighbours.
   &::before {
     content: '';
     position: absolute;
-    inset-block: 0;
-    left: 50%;
-    width: min(100%, 48rem);
-    transform: translateX(-50%);
+    inset: 0;
     z-index: -1;
-    background: url('/date-bg.webp') center / cover no-repeat;
-    -webkit-mask-image: linear-gradient(transparent, #000 7rem);
-    mask-image: linear-gradient(transparent, #000 7rem);
-  }
-
-  @media (min-width: 48rem) {
-    // The frame is larger here, so the leaves reach further in.
-    padding-block: 13rem 11rem;
-
-    &::before {
-      -webkit-mask-image:
-        linear-gradient(transparent, #000 9rem),
-        linear-gradient(90deg, transparent, #000 10%, #000 90%, transparent);
-      -webkit-mask-composite: source-in;
-      mask-image:
-        linear-gradient(transparent, #000 9rem),
-        linear-gradient(90deg, transparent, #000 10%, #000 90%, transparent);
-      mask-composite: intersect;
-    }
+    background:
+      radial-gradient(ellipse at 50% 55%, rgba(242, 140, 40, 0.16), transparent 60%),
+      radial-gradient(circle, rgba(230, 172, 76, 0.22) 1.2px, transparent 1.8px) 0 0 / 22px 22px;
+    -webkit-mask-image: radial-gradient(ellipse at center, #000 35%, transparent 75%);
+    mask-image: radial-gradient(ellipse at center, #000 35%, transparent 75%);
   }
 
   :where(h2, p, blockquote) {
@@ -126,7 +108,7 @@ $gold: #997a46;
       padding: 0.6rem 0.3rem;
       border: 1px solid rgba($gold, 0.55);
       border-radius: 0.5rem;
-      background: rgba(#fff, 0.65);
+      background: rgba(255, 255, 255, 0.05);
     }
 
     strong {
@@ -188,7 +170,7 @@ $gold: #997a46;
     border: 2px solid $gold;
     border-radius: 0.75rem;
     background: radial-gradient(circle at 50% 40%, #fffdf6, #f6e3b4);
-    box-shadow: 0 0.5rem 1.2rem rgba($ink, 0.2);
+    box-shadow: 0 0.5rem 1.2rem rgba(0, 0, 0, 0.45);
     // Dragging to scratch must not select the number underneath.
     user-select: none;
     -webkit-user-select: none;
@@ -202,7 +184,7 @@ $gold: #997a46;
   &__value {
     font-size: clamp(1.9rem, 9vw, 3.4rem);
     font-weight: 600;
-    color: $ink;
+    color: $card-ink;
     font-variant-numeric: lining-nums;
   }
 

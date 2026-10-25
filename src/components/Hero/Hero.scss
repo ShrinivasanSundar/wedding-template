@@ -3,8 +3,8 @@
   min-height: 100dvh;
   display: flex;
   flex-direction: column;
-  // Clears the title bar, which sits over the top of this section.
-  padding: calc(7.5rem + env(safe-area-inset-top, 0px)) 1.25rem
+  // Clears the title bar and the thoranam hanging from it.
+  padding: calc(10rem + env(safe-area-inset-top, 0px)) 1.25rem
     calc(1.25rem + env(safe-area-inset-bottom, 0px));
   text-align: center;
   color: var(--ink);
@@ -14,8 +14,8 @@
   overflow: hidden;
   background: var(--paper);
 
-  // The leaf painting around the edges. Its parallax drift only moves it
-  // down, more slowly than the page scrolls, so its top edge never shows.
+  // The temple tank at sunset. Its parallax drift only moves it down, more
+  // slowly than the page scrolls, so its top edge never shows.
   &__art {
     position: absolute;
     inset: 0;
@@ -23,20 +23,20 @@
     background: var(--hero-image) center / cover no-repeat;
   }
 
-  // A wash over the painting that stays put: pale in the middle so the text
-  // stays readable, fading into the paper at the bottom.
+  // A dusk wash over the painting that stays put: darkest behind the text
+  // so it stays readable, fading into the date section's colour at the bottom.
   &::before {
     content: '';
     position: absolute;
     inset: 0;
     z-index: -1;
     background:
-      linear-gradient(rgba(245, 242, 233, 0.17), transparent 25%, transparent 78%, var(--paper)),
+      linear-gradient(rgba(31, 12, 21, 0.55), rgba(31, 12, 21, 0.3) 30%, rgba(31, 12, 21, 0.45) 75%, var(--panel)),
       radial-gradient(
         ellipse at center,
-        rgba(245, 242, 233, 0.75),
-        rgba(245, 242, 233, 0.45) 45%,
-        transparent 75%
+        rgba(31, 12, 21, 0.8),
+        rgba(31, 12, 21, 0.55) 50%,
+        rgba(31, 12, 21, 0.2) 80%
       );
   }
 
@@ -54,9 +54,9 @@
   &::after {
     content: '';
     position: absolute;
-    inset: 6.5rem max(1rem, 50% - 24rem) 0;
+    inset: 9.5rem max(1rem, 50% - 24rem) 0;
     z-index: -1;
-    border: 1px solid rgba(153, 122, 70, 0.25);
+    border: 1px solid rgba(230, 172, 76, 0.4);
     border-bottom: 0;
     border-radius: 48% 48% 0 0 / 22rem 22rem 0 0;
     pointer-events: none;
@@ -90,7 +90,7 @@
     font-family: var(--tamil);
     font-size: clamp(0.85rem, 3.3vw, 1.1rem);
     line-height: 1.8;
-    color: #6a434c;
+    color: #ead7c4;
     text-wrap: balance;
 
     cite {
@@ -109,7 +109,7 @@
     font-style: italic;
     font-size: clamp(1.1rem, 3.8vw, 1.4rem);
     line-height: 1.45;
-    color: #6a434c;
+    color: #ead7c4;
     text-wrap: balance;
   }
 
@@ -123,12 +123,21 @@
     max-width: 60rem;
   }
 
+  // The names in a gold script.
   &__name {
+    font-family: 'Great Vibes', var(--serif);
     font-weight: 400;
-    font-size: clamp(2.1rem, 7.6vw, 4.6rem);
-    letter-spacing: -0.04em;
-    line-height: 1.05;
-    margin-bottom: 0.6rem;
+    font-size: clamp(2.6rem, 9vw, 5.4rem);
+    line-height: 1.15;
+    margin-bottom: 0.3rem;
+    // Room for the script's flourishes, which overhang the text box.
+    padding: 0 0.15em;
+    color: var(--gold);
+    background: linear-gradient(180deg, #ffe3a3 15%, var(--gold) 60%, #c98a2e);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    filter: drop-shadow(0 2px 8px rgba(0, 0, 0, 0.6));
   }
 
   &__parents {
@@ -182,20 +191,20 @@
   }
 
   @media (max-width: 767px) {
-    padding-top: calc(6.25rem + env(safe-area-inset-top, 0px));
+    padding-top: calc(9rem + env(safe-area-inset-top, 0px));
 
     &__art {
-      background-position: 30% center;
+      background-position: 45% center;
     }
 
     &::before {
       background:
-        linear-gradient(rgba(245, 242, 233, 0.3), transparent 30%, transparent 65%, var(--paper)),
-        radial-gradient(ellipse at center, rgba(245, 242, 233, 0.8), transparent 75%);
+        linear-gradient(rgba(31, 12, 21, 0.5), rgba(31, 12, 21, 0.4) 30%, rgba(31, 12, 21, 0.5) 65%, var(--panel)),
+        radial-gradient(ellipse at center, rgba(31, 12, 21, 0.75), rgba(31, 12, 21, 0.3) 80%);
     }
 
     &::after {
-      inset: 5.5rem 5% 1.5rem;
+      inset: 8.5rem 5% 1.5rem;
       border-radius: 48% 48% 0 0 / 12rem 12rem 0 0;
     }
   }
