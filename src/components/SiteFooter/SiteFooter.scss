@@ -1,0 +1,151 @@
+.site-footer {
+  :where(h2, p) {
+    margin: 0;
+  }
+
+  // Deep green panel with the leaf painting showing faintly through.
+  &__closing {
+    position: relative;
+    isolation: isolate;
+    overflow: hidden;
+    padding: 6.5rem 1.5rem 6rem;
+    background: #344b3d;
+    color: #f0efe0;
+    text-align: center;
+  }
+
+  // The temple corridor photo, tinted green and softly blurred; the photo is
+  // small, and the blur keeps it from looking pixelated when stretched.
+  &__art {
+    position: absolute;
+    inset: -20% -1rem;
+    z-index: -1;
+    background:
+      linear-gradient(rgba(52, 75, 61, 0.82), rgba(52, 75, 61, 0.92)),
+      var(--footer-image) center / cover no-repeat;
+    filter: blur(2px);
+  }
+
+  &__lotus {
+    width: 3rem;
+    margin-bottom: 1.7rem;
+    stroke: #c5b78b;
+    stroke-width: 1px;
+  }
+
+  &__quote {
+    max-width: 28rem;
+    margin: 0 auto 1.7rem;
+    font: 400 1.25rem / 1.65 var(--serif);
+    color: #ced4c5;
+  }
+
+  h2 {
+    font: 400 clamp(2.6rem, 4.5vw, 4.1rem) / 1.12 var(--serif);
+    letter-spacing: -0.025em;
+
+    em {
+      color: #d9d6b9;
+    }
+  }
+
+  &__signature {
+    margin: 1.9rem 0 0.9rem;
+    font: 400 1.55rem / 1.5 var(--serif);
+
+    i {
+      margin: 0 0.4rem;
+      color: #c9b991;
+    }
+  }
+
+  .eyebrow {
+    font-size: 0.5rem;
+    color: #c0cbbb;
+  }
+
+  &__bar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1.25rem;
+    padding: 1.4rem 5% calc(1.4rem + env(safe-area-inset-bottom, 0px));
+    background: #2e4235;
+    color: #c9d0bf;
+    font-size: 0.56rem;
+    letter-spacing: 0.06em;
+
+    .arrow {
+      width: 0.9rem;
+    }
+  }
+
+  &__home,
+  &__top {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+  }
+
+  &__top .arrow {
+    transform: rotate(-90deg);
+  }
+
+  &__motion {
+    display: flex;
+    align-items: center;
+    gap: 0.55rem;
+    min-height: 2.75rem;
+    padding: 0.3rem;
+    border: 0;
+    background: none;
+    font: inherit;
+    letter-spacing: inherit;
+    color: inherit;
+    cursor: pointer;
+  }
+
+  &__dot {
+    width: 6px;
+    height: 6px;
+    border: 1px solid #c4c4a1;
+    border-radius: 50%;
+    background: #c4c4a1;
+
+    &[data-paused='true'] {
+      background: none;
+    }
+  }
+
+  @media (max-width: 767px) {
+    &__closing {
+      padding: 4.5rem 7% 4rem;
+    }
+
+    &__quote {
+      max-width: 21.5rem;
+      font-size: 1.2rem;
+    }
+
+    h2 {
+      font-size: 2.9rem;
+    }
+
+    &__bar {
+      flex-wrap: wrap;
+      gap: 0 1rem;
+      padding-inline: 7%;
+      font-size: 0.5rem;
+    }
+
+    &__home {
+      flex: 1;
+    }
+  }
+
+  @media (max-width: 380px) {
+    h2 {
+      font-size: 2.6rem;
+    }
+  }
+}

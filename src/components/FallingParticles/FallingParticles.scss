@@ -1,0 +1,66 @@
+.falling {
+  position: fixed;
+  inset: 0;
+  z-index: 20;
+  opacity: 0.5;
+  overflow: hidden;
+  pointer-events: none;
+
+  // Falls straight down with a slight sideways drift…
+  &__item {
+    position: absolute;
+    top: -5vh;
+    left: var(--x);
+    animation: falling-drop var(--fall) linear infinite var(--delay);
+  }
+
+  // …while the glyph itself sways and turns.
+  &__shape {
+    display: block;
+    font-style: normal;
+    font-size: calc(14px * var(--scale));
+    line-height: 1;
+    animation: falling-sway var(--sway) ease-in-out infinite alternate;
+
+    &--flower {
+      color: #e6b9b0;
+      text-shadow: 0 0 3px rgba(214, 150, 140, 0.25);
+    }
+
+    &--star {
+      color: #c9a96a;
+      text-shadow: 0 0 3px rgba(201, 169, 106, 0.25);
+      animation-name: falling-twinkle;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    display: none;
+  }
+}
+
+@keyframes falling-drop {
+  to {
+    transform: translate3d(var(--drift), 112vh, 0);
+  }
+}
+
+@keyframes falling-sway {
+  from {
+    transform: translateX(-14px) rotate(-30deg);
+  }
+  to {
+    transform: translateX(14px) rotate(50deg);
+  }
+}
+
+@keyframes falling-twinkle {
+  from {
+    transform: translateX(-8px) scale(0.8);
+    opacity: 0.4;
+  }
+  to {
+    transform: translateX(8px) scale(1.1);
+    opacity: 1;
+  }
+}

@@ -1,0 +1,175 @@
+.venue {
+  padding: 5.3rem max(6%, 50vw - 37.5rem) 7.2rem;
+  background: var(--paper);
+  color: var(--ink);
+
+  :where(h2, p) {
+    margin: 0;
+  }
+
+  &__layout {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+    gap: 13%;
+    max-width: 72rem;
+    margin: auto;
+  }
+
+  // The leaf painting, cropped to its banana leaves and lotus, in an arch.
+  &__art {
+    position: relative;
+    height: 30rem;
+    overflow: hidden;
+    border-radius: 49% 49% 2px 2px;
+    background: #ede6d4;
+
+    img {
+      position: absolute;
+      top: -15%;
+      left: 0;
+      width: 185%;
+      max-width: none;
+      height: 125%;
+      object-fit: cover;
+      object-position: left center;
+      opacity: 0.9;
+      will-change: translate;
+    }
+  }
+
+  &__frame {
+    position: absolute;
+    inset: 15px;
+    border: 1px solid rgba(249, 247, 230, 0.63);
+    border-radius: inherit;
+  }
+
+  &__lotus {
+    position: absolute;
+    top: 40%;
+    right: 12%;
+    width: 4.75rem;
+    stroke: #8a7850;
+    stroke-width: 1px;
+  }
+
+  &__caption {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 2.4rem;
+    font-size: 0.56rem;
+    letter-spacing: 0.2em;
+    text-align: center;
+    text-transform: uppercase;
+    color: #556344;
+  }
+
+  &__details {
+    > .eyebrow {
+      max-width: 19rem;
+      font-size: 0.56rem;
+    }
+
+    h2 {
+      max-width: 27rem;
+      margin: 1.3rem 0;
+      font: 400 clamp(2.6rem, 4.2vw, 3.7rem) / 1.05 var(--serif);
+      letter-spacing: -0.035em;
+    }
+
+    address {
+      display: flex;
+      flex-direction: column;
+      font-size: 0.8rem;
+      font-style: normal;
+      line-height: 1.9;
+      color: #687260;
+    }
+
+    .arrow-link {
+      margin-top: 1.3rem;
+    }
+  }
+
+  &__tamil {
+    margin-bottom: 1.5rem;
+    font-family: var(--tamil);
+    font-size: 0.75rem;
+    line-height: 1.9;
+    color: #647057;
+  }
+
+  &__help {
+    margin: 1.9rem 0 0.55rem;
+    font-size: 0.65rem;
+    color: #6c765f;
+  }
+
+  &__phone {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.9rem;
+    font-size: 0.75rem;
+    letter-spacing: 0.08em;
+
+    .arrow {
+      width: 1rem;
+    }
+  }
+
+  @media (max-width: 1000px) {
+    padding-inline: 6%;
+
+    &__layout {
+      gap: 8%;
+    }
+
+    &__art {
+      height: 27rem;
+    }
+  }
+
+  @media (max-width: 767px) {
+    padding: 3.5rem 7% 4.4rem;
+
+    &__layout {
+      grid-template-columns: 1fr;
+      gap: 2.6rem;
+    }
+
+    &__art {
+      width: 100%;
+      max-width: 22rem;
+      height: 20.5rem;
+      margin: 0 auto;
+
+      img {
+        top: -20%;
+        width: 190%;
+        height: 132%;
+      }
+    }
+
+    &__caption {
+      font-size: 0.5rem;
+    }
+
+    &__details {
+      width: 100%;
+      max-width: 26rem;
+      margin: auto;
+
+      h2 {
+        font-size: 3.1rem;
+      }
+    }
+  }
+
+  @media (max-width: 380px) {
+    &__details h2 {
+      font-size: 2.75rem;
+    }
+  }
+}

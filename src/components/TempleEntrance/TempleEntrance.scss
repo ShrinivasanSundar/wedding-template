@@ -1,0 +1,434 @@
+@use 'sass:math';
+
+$gold: #d9aa4f;
+$gold-light: #f6dc96;
+$ivory: #fff8e7;
+$night: #1d0a10;
+
+// Artwork geometry: where things sit in src/assets/temple-scene.webp
+// (1024 × 1536). Update these if the picture is replaced.
+$art-w: 1024;
+$art-h: 1536;
+$door-x: 418; // left edge of the double doors
+$door-y: 957; // top edge
+$door-w: 190; // both leaves together
+$door-h: 240;
+$focus-y: 0.56; // point kept mid-screen when the picture is taller than the viewport
+
+$scene-ratio: math.div($art-w, $art-h);
+$door-left: math.div($door-x, $art-w);
+$door-top: math.div($door-y, $art-h);
+$door-width: math.div($door-w, $art-w);
+$door-height: math.div($door-h, $art-h);
+
+.entrance {
+  // The picture always fills the viewport height. On wide screens it grows up
+  // to 1.4× that (cropping sky and floor) so the temple is not left small.
+  --vh: 100vh;
+  --scene-h: max(var(--vh), min(100vw / #{$scene-ratio}, var(--vh) * 1.4));
+  --scene-w: calc(var(--scene-h) * #{$scene-ratio});
+  --scene-top: clamp(
+    calc(var(--vh) - var(--scene-h)),
+    calc(var(--vh) * 0.5 - var(--scene-h) * #{$focus-y}),
+    0px
+  );
+  --door-centre-y: calc(var(--scene-top) + var(--scene-h) * #{$door-top + $door-height * 0.5});
+
+  // Animated values. The defaults are the final state; idle, approaching and
+  // opening override them below.
+  --zoom: 7;
+  --sky-zoom: 1.15;
+  --lift: 1; // 0 = temple at rest, 1 = doorway centred in the viewport
+  --door: 1; // 0 = closed, 1 = open
+  --light: 1;
+  --veil: 1;
+  --cam-duration: var(--t-through);
+  --cam-ease: cubic-bezier(0.5, 0, 0.9, 0.6);
+
+  position: fixed;
+  inset: 0;
+  z-index: 10;
+  overflow: hidden;
+  overscroll-behavior: none;
+  touch-action: manipulation;
+  user-select: none;
+  background: $night;
+
+  @supports (height: 100dvh) {
+    --vh: 100dvh;
+  }
+
+  // Hidden until the artwork has loaded.
+  transition: opacity 500ms ease;
+
+  &[data-ready='false'] {
+    opacity: 0;
+  }
+
+  &[data-phase='idle'] {
+    --zoom: 1;
+    --sky-zoom: 1;
+    --lift: 0;
+    --door: 0;
+    --light: 0;
+    --veil: 0;
+  }
+
+  &[data-phase='approaching'] {
+    --zoom: 3;
+    --sky-zoom: 1.06;
+    --door: 0;
+    --light: 0;
+    --veil: 0;
+    --cam-duration: var(--t-approach);
+    --cam-ease: cubic-bezier(0.45, 0, 0.2, 1);
+  }
+
+  &[data-phase='opening'] {
+    --zoom: 3.5;
+    --sky-zoom: 1.1;
+    --veil: 0;
+    --cam-duration: var(--t-open);
+    --cam-ease: linear;
+  }
+
+  &[data-phase='complete'] {
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity var(--t-exit) ease;
+  }
+
+  &__sky {
+    position: absolute;
+    inset: 0;
+    // A blurred copy of the picture fills the screen beside it on wide displays.
+    inset: -40px;
+    background: var(--scene-image) center / cover;
+    filter: blur(28px) brightness(0.75);
+    transform: scale(var(--sky-zoom));
+    transition: transform var(--cam-duration) var(--cam-ease);
+  }
+
+  // The camera scales the whole scene about the centre of the doorway while
+  // lifting that point to the middle of the viewport.
+  &__camera {
+    position: absolute;
+    inset: 0;
+    transform-origin: 50% var(--door-centre-y);
+    transform: translateY(calc((50% - var(--door-centre-y)) * var(--lift))) scale(var(--zoom));
+    transition: transform var(--cam-duration) var(--cam-ease);
+  }
+
+  &__scene {
+    position: absolute;
+    left: calc(50% - var(--scene-w) / 2);
+    top: var(--scene-top);
+    width: var(--scene-w);
+    height: var(--scene-h);
+  }
+
+  &__art {
+    display: block;
+    width: 100%;
+    height: 100%;
+    // Soften the side edges where the picture meets the blurred backdrop.
+    -webkit-mask-image: linear-gradient(90deg, transparent, #000 5%, #000 95%, transparent);
+    mask-image: linear-gradient(90deg, transparent, #000 5%, #000 95%, transparent);
+  }
+
+  // The couple's names, set over the tower.
+  &__names {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 29%;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-family: 'Great Vibes', 'Palatino Linotype', Palatino, Georgia, serif;
+    font-size: calc(var(--scene-w) * 0.105);
+    line-height: 0.95;
+    color: $ivory;
+    text-shadow:
+      0 0 0.12em rgba(29, 10, 16, 0.95),
+      0 0.04em 0.3em rgba(29, 10, 16, 0.9),
+      0 0 0.9em rgba(29, 10, 16, 0.75);
+    pointer-events: none;
+  }
+
+  &__heart {
+    font-family: Georgia, serif;
+    font-size: 0.42em;
+    line-height: 1.5;
+    color: $gold-light;
+  }
+
+  // Warm light spilling onto the facade as the doors open.
+  &__spill {
+    position: absolute;
+    left: 20%;
+    right: 20%;
+    top: 52%;
+    bottom: 12%;
+    background: radial-gradient(ellipse at 50% 50%, rgba(255, 220, 140, 0.75), transparent 62%);
+    opacity: var(--light);
+    transition: opacity var(--t-open) ease-out;
+    pointer-events: none;
+  }
+
+  // Covers the doors painted into the picture. The two leaves below show that
+  // same patch of the picture, so closed they are indistinguishable from it.
+  &__doorway {
+    position: absolute;
+    left: math.percentage($door-left);
+    top: math.percentage($door-top);
+    width: math.percentage($door-width);
+    height: math.percentage($door-height);
+    overflow: hidden;
+    perspective: calc(var(--scene-w) * 0.9);
+    background: #140605;
+  }
+
+  &__light {
+    position: absolute;
+    inset: 0;
+    background:
+      var(--glow-image) center / 135% 125% no-repeat,
+      radial-gradient(ellipse at 50% 55%, $ivory 0, #f8d98c 45%, #c98a2b 100%);
+    opacity: var(--light);
+    transition: opacity var(--t-open) ease-out;
+  }
+
+  &__rays {
+    position: absolute;
+    inset: -60%;
+    background: repeating-conic-gradient(
+      from 0deg at 50% 50%,
+      rgba(255, 248, 225, 0.55) 0 5deg,
+      transparent 5deg 18deg
+    );
+    -webkit-mask-image: radial-gradient(circle, #000 10%, transparent 60%);
+    mask-image: radial-gradient(circle, #000 10%, transparent 60%);
+    opacity: calc(var(--light) * 0.6);
+    transition: opacity var(--t-open) ease-out;
+  }
+
+  &__motes {
+    position: absolute;
+    inset: 0;
+    opacity: var(--light);
+    transition: opacity var(--t-open) ease-out;
+
+    span {
+      position: absolute;
+      left: var(--x);
+      bottom: 0;
+      width: 4%;
+      aspect-ratio: 1;
+      border-radius: 50%;
+      background: $ivory;
+    }
+  }
+
+  &:not([data-phase='idle']) &__rays {
+    animation: entrance-rays 24s linear infinite;
+  }
+
+  &:not([data-phase='idle']) &__motes span {
+    animation: entrance-mote 2.4s ease-out infinite var(--delay);
+  }
+
+  &__door {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: 50%;
+    background-color: #5a3413;
+    background-image: var(--scene-image);
+    background-size: var(--scene-w) var(--scene-h);
+    background-position-y: calc(var(--scene-h) * #{-$door-top});
+    transition: transform var(--t-open) cubic-bezier(0.35, 0, 0.2, 1);
+
+    // Each leaf swings inward (away from the viewer) on its outer hinge.
+    &--left {
+      left: 0;
+      transform-origin: left center;
+      transform: rotateY(calc(var(--door) * 88deg));
+      background-position-x: calc(var(--scene-w) * #{-$door-left});
+    }
+
+    &--right {
+      right: 0;
+      transform-origin: right center;
+      transform: rotateY(calc(var(--door) * -88deg));
+      background-position-x: calc(var(--scene-w) * #{-($door-left + $door-width * 0.5)});
+    }
+  }
+
+  &__particles {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+
+    span {
+      position: absolute;
+      left: var(--x);
+      bottom: -2%;
+      width: var(--size);
+      height: var(--size);
+      border-radius: 50%;
+      background: $gold-light;
+      opacity: 0;
+      animation: entrance-float var(--duration) linear infinite var(--delay);
+    }
+  }
+
+  // Golden dissolve that carries the visitor through the doorway.
+  &__veil {
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(circle at 50% 50%, $ivory 0, #fbe9c0 45%, #e9bd6a 100%);
+    opacity: var(--veil);
+    transition: opacity var(--t-through) ease-in;
+    pointer-events: none;
+  }
+
+  // Full-screen button: a click, tap, Enter or Space anywhere starts the entrance.
+  &__trigger {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 0.7rem;
+    margin: 0;
+    padding: 0 1rem calc(1.2rem + env(safe-area-inset-bottom, 0px));
+    border: 0;
+    // Scrim so the hint stays readable over the picture.
+    background: linear-gradient(to top, rgba(29, 10, 16, 0.8), transparent 9rem);
+    color: #f7e7c4;
+    font: inherit;
+    cursor: pointer;
+    outline: none;
+    -webkit-tap-highlight-color: transparent;
+    transition: opacity 400ms ease;
+
+    &:disabled {
+      opacity: 0;
+      cursor: default;
+    }
+
+    &:focus-visible .entrance__hint {
+      outline: 2px solid $gold-light;
+      outline-offset: 6px;
+    }
+  }
+
+  &__hint {
+    font-size: 0.8rem;
+    letter-spacing: 0.32em;
+    text-transform: uppercase;
+    // Optical centring: cancel the trailing letter-space.
+    margin-right: -0.32em;
+    border-radius: 2px;
+  }
+
+  &__hint-touch {
+    display: none;
+  }
+
+  @media (hover: none) and (pointer: coarse) {
+    &__hint-touch {
+      display: inline;
+    }
+
+    &__hint-pointer {
+      display: none;
+    }
+  }
+
+  &__ornament {
+    position: relative;
+    width: 0.6rem;
+    height: 0.6rem;
+    background: $gold;
+    transform: rotate(45deg);
+
+    &::after {
+      content: '';
+      position: absolute;
+      inset: -0.35rem;
+      border: 1px solid $gold-light;
+      animation: entrance-pulse 2.2s ease-out infinite;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    &__sky,
+    &__camera {
+      transform: none;
+      transition: none;
+    }
+
+    &__door {
+      transition: none;
+    }
+
+    &__rays,
+    &__motes span,
+    &__particles span,
+    &__ornament::after {
+      animation: none !important;
+    }
+  }
+}
+
+@keyframes entrance-pulse {
+  0% {
+    transform: scale(0.7);
+    opacity: 0.9;
+  }
+  100% {
+    transform: scale(1.9);
+    opacity: 0;
+  }
+}
+
+@keyframes entrance-float {
+  0% {
+    transform: translateY(0);
+    opacity: 0;
+  }
+  15%,
+  70% {
+    opacity: 0.55;
+  }
+  100% {
+    transform: translateY(-105vh);
+    opacity: 0;
+  }
+}
+
+@keyframes entrance-mote {
+  0% {
+    transform: translateY(0);
+    opacity: 0;
+  }
+  30% {
+    opacity: 0.9;
+  }
+  100% {
+    transform: translateY(-600%);
+    opacity: 0;
+  }
+}
+
+@keyframes entrance-rays {
+  to {
+    transform: rotate(360deg);
+  }
+}

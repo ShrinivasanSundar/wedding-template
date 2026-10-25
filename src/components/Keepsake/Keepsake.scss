@@ -1,0 +1,87 @@
+.keepsake {
+  padding: 5.3rem max(6%, 50vw - 37.5rem) 7.2rem;
+  background: #e7eadf;
+  color: var(--ink);
+
+  :where(h2, p) {
+    margin: 0;
+  }
+
+  &__layout {
+    display: grid;
+    grid-template-columns: 0.85fr 1fr;
+    align-items: center;
+    gap: 11%;
+    max-width: 72rem;
+    margin: auto;
+  }
+
+  // The card sits slightly turned, like a printed invitation on a table,
+  // and straightens when hovered. The tilt is on the image because the
+  // link itself is moved by the section's reveal animation.
+  &__card {
+    display: block;
+    max-width: 24rem;
+    justify-self: center;
+
+    img {
+      display: block;
+      width: 100%;
+      height: auto;
+      border: 8px solid #fff;
+      box-shadow: 0 1.5rem 3.5rem rgba(52, 69, 53, 0.22);
+      transform: rotate(-2deg);
+      transition: transform 400ms ease;
+    }
+
+    &:hover img,
+    &:focus-visible img {
+      transform: rotate(0) scale(1.02);
+    }
+  }
+
+  &__details h2 {
+    margin: 1.2rem 0 1.4rem;
+    font: 400 clamp(2.6rem, 4.4vw, 3.9rem) / 1.05 var(--serif);
+    letter-spacing: -0.035em;
+
+    em {
+      color: #6e785b;
+    }
+  }
+
+  &__intro {
+    max-width: 28rem;
+    font: 400 1.2rem / 1.55 var(--serif);
+    color: #5a6653;
+  }
+
+  &__download {
+    margin-top: 1.3rem;
+  }
+
+  @media (max-width: 1000px) {
+    padding-inline: 6%;
+
+    &__layout {
+      gap: 8%;
+    }
+  }
+
+  @media (max-width: 767px) {
+    padding: 3.5rem 7% 4.4rem;
+
+    &__layout {
+      grid-template-columns: 1fr;
+      gap: 3rem;
+    }
+
+    &__card {
+      max-width: 17rem;
+    }
+
+    &__details h2 {
+      font-size: 2.9rem;
+    }
+  }
+}

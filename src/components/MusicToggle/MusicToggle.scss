@@ -1,0 +1,77 @@
+.music-toggle {
+  position: fixed;
+  right: calc(1rem + env(safe-area-inset-right, 0px));
+  bottom: calc(1rem + env(safe-area-inset-bottom, 0px));
+  z-index: 25;
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  min-height: 2.75rem;
+  padding: 0.55rem 1rem 0.55rem 0.85rem;
+  border: 1px solid rgba(52, 69, 53, 0.25);
+  border-radius: 2rem;
+  background: rgba(245, 242, 233, 0.85);
+  -webkit-backdrop-filter: blur(8px);
+  backdrop-filter: blur(8px);
+  box-shadow: 0 0.4rem 1.5rem rgba(52, 69, 53, 0.15);
+  font: 500 0.6rem var(--sans);
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--ink);
+  cursor: pointer;
+  animation: music-toggle-in 600ms ease 400ms both;
+
+  &:focus-visible {
+    outline: 1px solid var(--gold);
+    outline-offset: 3px;
+  }
+
+  // Four little bars that bounce like an equaliser while the song plays and
+  // lie flat when it is off.
+  &__bars {
+    display: flex;
+    align-items: flex-end;
+    gap: 2px;
+    height: 0.8rem;
+
+    i {
+      width: 2px;
+      height: 100%;
+      background: var(--gold);
+      transform: scaleY(0.25);
+      transform-origin: bottom;
+    }
+  }
+
+  &[data-playing='true'] &__bars i {
+    animation: music-toggle-bar 900ms ease-in-out infinite alternate;
+
+    &:nth-child(2) {
+      animation-delay: -300ms;
+    }
+
+    &:nth-child(3) {
+      animation-delay: -600ms;
+    }
+
+    &:nth-child(4) {
+      animation-delay: -150ms;
+    }
+  }
+}
+
+@keyframes music-toggle-bar {
+  from {
+    transform: scaleY(0.25);
+  }
+  to {
+    transform: scaleY(1);
+  }
+}
+
+@keyframes music-toggle-in {
+  from {
+    opacity: 0;
+    transform: translateY(1rem);
+  }
+}
